@@ -1,5 +1,20 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Description
+URL shortener built on top of [Next.js](https://nextjs.org/)
+See live demo here: [Singkat-in](https://singkat-in.vercel.app/)
+
+Available features:
+- Use custom endpoint, availability will be checked
+- Use custom expiration time, default to 90 days
+- Copy to clipboard after successful shortening
+
+Screenshot:
+<img width="1912" alt="image" src="https://github.com/bedhilzz/singkat-in/assets/25608832/91b5d937-cf76-44ea-ac9c-8145492d20be">
+
+After successful shortening (popup appears):
+<img width="1912" alt="image" src="https://github.com/bedhilzz/singkat-in/assets/25608832/af5ec468-5113-4d88-8614-bb377fc05e8e">
+
 ## Getting Started
 
 First, run the development server:
