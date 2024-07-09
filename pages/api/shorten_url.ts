@@ -1,6 +1,6 @@
 'use server'
 
-import { ShortenedUrl } from '../interfaces/interfaces'
+import { ShortenedUrl } from '../../interfaces'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
