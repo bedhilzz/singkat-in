@@ -1,4 +1,5 @@
 import { getShortenedUrl } from "@/lib/repo"
+import { notFound } from "next/navigation"
 import { NextRequest, NextResponse } from "next/server"
 
 export const GET = async (
@@ -10,20 +11,20 @@ export const GET = async (
     try {
         if (!custom_endpoint) {
             // No custom endpoint supplied, return 404
-            return NextResponse.json(null, {status: 404})
+            notFound()
         } else {
             const shortenedUrlDoc = await getShortenedUrl(custom_endpoint)
             
             if (!shortenedUrlDoc) {
                 // No shortened URL found, return 404
-                return NextResponse.json(null, {status: 404})
+                notFound()
             } else {
-                return NextResponse.json(shortenedUrlDoc, {status: 200})
+                return NextResponse.redirect(new URL(shortenedUrlDoc.actual_url))
             }
         }
 
     } catch (error) {
         console.log(error)
-        return NextResponse.json(null, {status: 500})
+        notFound()
     }
 }
