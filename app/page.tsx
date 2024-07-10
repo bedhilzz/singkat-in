@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useEffect, useRef, useState } from 'react'
 import { FormEvent } from 'react'
-import ResponseModel from './components/modal';
+import ResponseModel from '../components/modal';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
@@ -15,16 +15,26 @@ export default function Home() {
   const [modalTitle, setModalTitle] = useState<string>('')
   const [modalBody, setModalBody] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isErrorModal, setIsErrorModal] = useState<boolean>(false)
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const handleClose = () => {
     setShowModal(false)
   }
 
-  const showResponseModal = (body: string) => {
+  const showSuccessResponseModal = (body: string) => {
     const title: string = 'Your shortened link is ready!'
     setModalTitle(title)
-    setModalBody(hostname + '/' + body)
+    setModalBody(`${hostname}/${body}`)
+    setIsErrorModal(false)
+    setShowModal(true)
+  }
+  
+  const showFailResponseModal = (body: string) => {
+    const title: string = 'Error has occured!'
+    setModalTitle(title)
+    setModalBody(`Custom endpoint "${body}" already exists!`)
+    setIsErrorModal(true)
     setShowModal(true)
   }
 
@@ -43,8 +53,14 @@ export default function Home() {
           expiration_time: formData.get('expirationDate')
         })
       })
+
       const data = await response.json()
-      showResponseModal(data.custom_endpoint as string)
+      
+      if (response.status == 409) {
+        showFailResponseModal(data.custom_endpoint as string)
+      } else {
+        showSuccessResponseModal(data.custom_endpoint as string)
+      }
     } catch (error) {
       console.log(error)
     } finally {
@@ -63,6 +79,7 @@ export default function Home() {
         title={modalTitle}
         body={modalBody}
         show={showModal}
+        isError={isErrorModal}
         handleClose={handleClose}
       ></ResponseModel>
       <div className='d-flex flex-row justify-content-center mt-5'>

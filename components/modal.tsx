@@ -6,7 +6,8 @@ import Form from 'react-bootstrap/Form';
 function ResponseModel(params: {
     title: string,
     body: string,
-    show: boolean
+    show: boolean,
+    isError: boolean,
     handleClose: () => void
 }) {
     return (
@@ -16,12 +17,14 @@ function ResponseModel(params: {
             </Modal.Header>
 
             <Modal.Body>
+                {params.isError ? <span>{params.body}</span>: 
                 <InputGroup>
                     <Form.Control value={params.body} disabled />
                     <Button variant="outline-secondary" onClick={() => { navigator.clipboard.writeText(params.body) }}>
                         Copy <i className='bi bi-clipboard'></i>
                     </Button>
                 </InputGroup>
+                }
             </Modal.Body>
 
             <Modal.Footer>
