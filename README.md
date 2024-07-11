@@ -1,15 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Description
-URL shortener built on top of [Next.js](https://nextjs.org/)
+URL shortener platform (similar like e.g. tinyurl or bitly) built on top of [Next.js](https://nextjs.org/) <br>
 See live demo here: [Singkat-in](https://singkat-in.vercel.app/)
 
-Available features:
+### Available features
 - Use custom endpoint, availability will be checked
 - Use custom expiration time, default to 90 days
 - Copy to clipboard after successful shortening
+- Use shortened URL in browser and it will redirect you to the actual URL
 
-Screenshot:
+## Tech Stack
+- Fullstack using Next.js framework
+  - React for Frontend
+  - Node.js for Backend
+- MongoDB to store the shortened URLs
+- Bootstrap for styling 
+
+### Screenshots
 <img width="1912" alt="image" src="https://github.com/bedhilzz/singkat-in/assets/25608832/91b5d937-cf76-44ea-ac9c-8145492d20be">
 
 After successful shortening (popup appears):
@@ -17,7 +23,7 @@ After successful shortening (popup appears):
 
 ## Getting Started
 
-First, run the development server:
+If you want to try it locally, you can clone the project, then install all of the dependencies, and run the development server:
 
 ```bash
 npm run dev
