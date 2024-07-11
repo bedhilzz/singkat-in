@@ -138,7 +138,7 @@ export default function Home() {
                   <Form.Control name='customEndpoint' placeholder='e.g. MyFirstYoutubeVideo' pattern='^[a-zA-Z0-9_]*$' onChange={handleCustomEndpointValidity} />
                 </InputGroup>
                 <Form.Text id='customEndpointHelp' muted>
-                  Only accept <b>alphanumeric or underscore</b>, If it's left unspecified, you will get random endpoint from us, custom endpoint availability will also be checked.
+                  Only accept <b>alphanumeric or underscore</b>, the availability will be checked. If it's left unspecified, you will get random endpoint from us.
                 </Form.Text>
               </Form.Group>
               <Form.Group className='mt-4'>
@@ -162,7 +162,7 @@ export default function Home() {
             </Form>
           </div>
           <div className='d-flex justify-content-center mt-5'>
-            <p>Reached to me in <i className='bi bi-github'></i> <Link href={'https://github.com/bedhilzz/singkat-in'}>@bedhilzz</Link></p>
+            <p>Reach me in <i className='bi bi-github'></i> <Link href={'https://github.com/bedhilzz/singkat-in'}>@bedhilzz</Link></p>
           </div>
         </div>
       </Container>
